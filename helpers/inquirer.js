@@ -62,6 +62,7 @@ const inquirerMenu = async () => {
 
 const pause = async () => {
   
+  console.log('\n')
   return inquirer.prompt(pauseMenu);
 
 }
