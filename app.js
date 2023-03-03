@@ -1,4 +1,5 @@
 const { inquirerMenu, pause, readInput } = require('./helpers/inquirer');
+const { saveOnDatabase, readDatabase } = require('./helpers/saveFile');
 const Tasks = require('./models/tasks');
 
 require('colors');
@@ -9,6 +10,13 @@ const main = async () => {
 
   let opt = "";
   const tasks = new Tasks();
+  const tasksFromDB = readDatabase();
+
+  if ( tasksFromDB ) {
+    // Todo establecer las tareas
+  }
+
+  await pause();
 
   do {
 
@@ -27,6 +35,10 @@ const main = async () => {
         break;
     }
     
+
+
+    // saveOnDatabase( tasks.listArray );
+
     if (opt !== '0') await pause();
 
   } while (opt !== '0');
