@@ -13,10 +13,8 @@ const main = async () => {
   const tasksFromDB = readDatabase();
 
   if ( tasksFromDB ) {
-    // Todo establecer las tareas
+    tasks.loadTasksFromArray( tasksFromDB );
   }
-
-  await pause();
 
   do {
 
@@ -31,13 +29,14 @@ const main = async () => {
 
         break;
       case "2":
-        console.log(tasks.listArray);
+        // console.log(tasks.listArray);
+        tasks.showAllTasks();
         break;
     }
     
 
 
-    // saveOnDatabase( tasks.listArray );
+    saveOnDatabase( tasks.listArray );
 
     if (opt !== '0') await pause();
 
