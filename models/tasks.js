@@ -51,15 +51,37 @@ class Tasks {
       console.log( `${idx} ${desc} :: ${state}` );
 
     })
+  }
+
+  showCompletedPendingTasks( completed = true ) {
+
+    if ( this.listArray.length <= 0 ) {
+      console.log("\nTask list is empty, please add a new task".green);
+      return
+    }
+
+    console.log(" ");
+
+    let taskNumber = 1;
     
-    // console.log(" ");
-    // this.listArray.map( ({id, desc, dateDone }, index) => {
-    //   if ( dateDone != null ) {
-    //     console.log( `${index+1}.`.green, `${desc} --->`, `${"Completed".green}`)
-    //   } else {
-    //     console.log( `${index+1}.`.red, `${desc} --->`, `${"Pending".red}`)
-    //   }
-    // })
+    this.listArray.map( (task) => {
+
+      const { desc, dateDone } = task;
+      const idx = (dateDone) ? `${taskNumber + "."}`.green : `${taskNumber + "."}`.red;
+      const state = (dateDone) 
+                      ? "Completed".green
+                      : "Pending".red
+
+      if ( completed === true && dateDone !== null ) {
+        console.log(`${idx} ${desc} ${state}`)
+        taskNumber ++;
+      }
+      else if ( completed === false && dateDone === null){
+        console.log(`${idx} ${desc} ${state}`);
+        taskNumber ++;
+      }
+
+    })
 
   }
 

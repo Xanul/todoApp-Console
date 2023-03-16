@@ -28,10 +28,19 @@ const main = async () => {
         tasks.createTask(desc);
 
         break;
+
       case "2":
-        // console.log(tasks.listArray);
         tasks.showAllTasks();
         break;
+
+      case "3":
+        tasks.showCompletedPendingTasks(true);
+        break;
+
+      case "4":
+        tasks.showCompletedPendingTasks(false);
+        break;
+
     }
     
 
