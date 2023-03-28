@@ -1,4 +1,4 @@
-const { inquirerMenu, pause, readInput } = require('./helpers/inquirer');
+const { inquirerMenu, pause, readInput, deleteTaskOptions, confirm } = require('./helpers/inquirer');
 const { saveOnDatabase, readDatabase } = require('./helpers/saveFile');
 const Tasks = require('./models/tasks');
 
@@ -40,6 +40,17 @@ const main = async () => {
       case "4":
         tasks.showCompletedPendingTasks(false);
         break;
+
+      case "6":
+        const id = await deleteTaskOptions( tasks.listArray );
+        if ( id == 0 ) break;
+        const confirmDelete = await confirm("Are you sure you want to delete?")
+        
+        if ( confirmDelete ) {
+          tasks.delteTask( id );
+          console.log("");
+          console.log("Task Deleted");
+        }
 
     }
     

@@ -10,6 +10,14 @@ class Tasks {
     this._list = {};
   }
 
+  delteTask( id = " " ) {
+
+    if ( this._list[id] ) {
+      delete this._list[id];
+    }
+
+  }
+
   get listArray() {
     const list = [];
     // This tool goes trough all keys in the object
@@ -73,11 +81,11 @@ class Tasks {
                       : "Pending".red
 
       if ( completed === true && dateDone !== null ) {
-        console.log(`${idx} ${desc} ${state}`)
+        console.log(`${idx} ${desc} ${state} ${dateDone}`)
         taskNumber ++;
       }
       else if ( completed === false && dateDone === null){
-        console.log(`${idx} ${desc} ${state}`);
+        console.log(`${idx} ${desc} ${state} ${dateDone}`);
         taskNumber ++;
       }
 
