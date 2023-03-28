@@ -1,53 +1,46 @@
 const inquirer = require('inquirer');
 require('colors');
 
-const menuOpts = [
-  {
-    type: 'list',
-    name: 'option',
-    message: 'Please select an option',
-    choices: [
-      {
-        value: '1',
-        name: `${"1.".green} Create a new task`
-      },
-      {
-        value: '2',
-        name: `${"2.".green} Show all tasks`
-      },
-      {
-        value: '3',
-        name: `${"3.".green} Show completed tasks`
-      },
-      {
-        value: '4',
-        name: `${"4.".green} Show pending tasks`
-      },
-      {
-        value: '5',
-        name: `${"5.".green} Mark completed tasks`
-      },
-      {
-        value: '6',
-        name: `${"6.".green} Delete a tasks`
-      },
-      {
-        value: '0',
-        name: `${"0.".green} Exit`
-      }
-    ]
-  }
-]
-
-const pauseMenu = [
-  {
-    type: 'input',
-    name: 'pause',
-    message: `Press ${'ENTER'.green} to continue`
-  }
-]
-
+// Main menu of the app
 const inquirerMenu = async () => {
+
+  const menuOpts = [
+    {
+      type: 'list',
+      name: 'option',
+      message: 'Please select an option',
+      choices: [
+        {
+          value: '1',
+          name: `${"1.".green} Create a new task`
+        },
+        {
+          value: '2',
+          name: `${"2.".green} Show all tasks`
+        },
+        {
+          value: '3',
+          name: `${"3.".green} Show completed tasks`
+        },
+        {
+          value: '4',
+          name: `${"4.".green} Show pending tasks`
+        },
+        {
+          value: '5',
+          name: `${"5.".green} Mark completed tasks`
+        },
+        {
+          value: '6',
+          name: `${"6.".green} Delete a tasks`
+        },
+        {
+          value: '0',
+          name: `${"0.".green} Exit`
+        }
+      ]
+    }
+  ]
 
   console.clear();
   console.log('========================='.green);
@@ -62,6 +55,14 @@ const inquirerMenu = async () => {
 
 const pause = async () => {
   
+  const pauseMenu = [
+    {
+      type: 'input',
+      name: 'pause',
+      message: `Press ${'ENTER'.green} to continue`
+    }
+  ]
+
   console.log('\n')
   return inquirer.prompt(pauseMenu);
 
