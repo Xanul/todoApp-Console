@@ -1,4 +1,4 @@
-const { inquirerMenu, pause, readInput, deleteTaskOptions, confirm } = require('./helpers/inquirer');
+const { inquirerMenu, pause, readInput, deleteTaskOptions, confirm, checkTaskOptions } = require('./helpers/inquirer');
 const { saveOnDatabase, readDatabase } = require('./helpers/saveFile');
 const Tasks = require('./models/tasks');
 
@@ -39,6 +39,10 @@ const main = async () => {
 
       case "4":
         tasks.showCompletedPendingTasks(false);
+        break;
+
+      case "5":
+        const ids = await checkTaskOptions( tasks.listArray );
         break;
 
       case "6":

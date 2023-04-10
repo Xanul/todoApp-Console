@@ -53,6 +53,7 @@ const inquirerMenu = async () => {
 
 }
 
+// Pause option
 const pause = async () => {
   
   const pauseMenu = [
@@ -68,6 +69,7 @@ const pause = async () => {
 
 }
 
+// Read input function
 const readInput = async ( msg ) => {
 
   const question = [
@@ -89,8 +91,10 @@ const readInput = async ( msg ) => {
 
 }
 
+// Menu for deleting a task
 const deleteTaskOptions = async ( tasks = [] ) => {
 
+  // Using map to crate a list of tasks to delete
   const deleteOptions = tasks.map((task, i) => {
 
     const idx = `${i+1}.`.green
@@ -101,6 +105,7 @@ const deleteTaskOptions = async ( tasks = [] ) => {
     }
   })
 
+  // Adding an option at the top to cancel the operation
   deleteOptions.unshift({
     value: '0',
     name: '0. '.green + "Cancel".red
@@ -122,6 +127,7 @@ const deleteTaskOptions = async ( tasks = [] ) => {
 
 }
 
+// Function to confirm the operation 
 const confirm = async ( message ) => {
   const confirmQuestion = [
     {
@@ -137,10 +143,42 @@ const confirm = async ( message ) => {
 
 }
 
+const checkTaskOptions = async ( tasks = [] ) => {
+
+  // Using map to crate a list of tasks to check or uncheck
+  const checkedOptions = tasks.map((task, i) => {
+
+    const idx = `${i+1}.`.green
+
+    return {
+      value: task.id,
+      name: `${idx} ${task.desc}`,
+      checked: ( task.dateDone ) ? true : false
+    }
+  })
+
+  const checkMenu = [
+    {
+      type: 'checkbox',
+      name: 'ids',
+      message: "Select a task",
+      choices: checkedOptions
+    }
+  ]
+
+  const { ids } = await inquirer.prompt(checkMenu);
+  console.log({ids})
+
+  return ids;
+
+
+}
+
 module.exports = {
   inquirerMenu,
   pause,
   readInput,
   deleteTaskOptions,
-  confirm
+  confirm,
+  checkTaskOptions
 }
