@@ -143,6 +143,7 @@ const confirm = async ( message ) => {
 
 }
 
+// Function to check or uncheck the tasks
 const checkTaskOptions = async ( tasks = [] ) => {
 
   // Using map to crate a list of tasks to check or uncheck
@@ -167,10 +168,8 @@ const checkTaskOptions = async ( tasks = [] ) => {
   ]
 
   const { ids } = await inquirer.prompt(checkMenu);
-  console.log({ids})
 
   return ids;
-
 
 }
 

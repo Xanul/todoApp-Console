@@ -81,7 +81,7 @@ class Tasks {
                       : "Pending".red
 
       if ( completed === true && dateDone !== null ) {
-        console.log(`${idx} ${desc} ${state} ${dateDone}`)
+        console.log(`${idx} ${desc} ${state} ${dateDone.blue}`)
         taskNumber ++;
       }
       else if ( completed === false && dateDone === null){
@@ -93,6 +93,21 @@ class Tasks {
 
   }
 
+  toggleCompletedTasks( ids = [] ) {
+
+    ids.forEach( id => {
+      const task = this._list[id];
+      if (!task.dateDone) {
+        task.dateDone = new Date().toISOString();
+      }
+    })
+
+    this.listArray.forEach( task => {
+      if ( !ids.includes(task.id) ) { 
+        this._list[task.id].dateDone = null;
+      }
+    })
+  }
 }
 
 module.exports = Tasks;
